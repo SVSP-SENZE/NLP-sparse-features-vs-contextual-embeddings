@@ -11,8 +11,7 @@ from wordcloud import WordCloud
 
 def generate_class_wordclouds(df):
     """
-    Creates word clouds for each class to satisfy the 
-    'Creativity with Plots' requirement.
+    Creates word clouds for each class.
     """
     print("--- Generating Word Clouds for Each Class ---")
     
@@ -83,8 +82,7 @@ def run_eda(df):
 def get_sparse_features(text_series):
     # (1) Unigram Bag-of-Words
     bow_vec = CountVectorizer(stop_words='english', max_features=2000)
-    # fit_transform was missing before — x_bow was never actually computed,
-    # which would cause a NameError at return time
+    # remove all the stop words
     x_bow = bow_vec.fit_transform(text_series)
 
     # (2) Bigram TF-IDF
