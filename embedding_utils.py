@@ -8,7 +8,7 @@ import config
 def get_bert_embeddings(text_list):
     """
     Extracts [CLS] embeddings from a frozen pretrained encoder.
-    Requirement: Part B of SML_Project.pdf
+
     """
     
     # 1. Check if cached embeddings already exist to save time
