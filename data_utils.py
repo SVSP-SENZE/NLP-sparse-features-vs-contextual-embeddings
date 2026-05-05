@@ -83,8 +83,9 @@ def run_eda(df):
 def get_sparse_features(text_series):
     # (1) Unigram Bag-of-Words
     bow_vec = CountVectorizer(stop_words='english', max_features=2000)
-    
-    #here, we actual do this as a part of our noise reduction
+    # fit_transform was missing before — x_bow was never actually computed,
+    # which would cause a NameError at return time
+    x_bow = bow_vec.fit_transform(text_series)
 
     # (2) Bigram TF-IDF
     tfidf_vec = TfidfVectorizer(stop_words='english', ngram_range=(1, 2), max_features=2000)
